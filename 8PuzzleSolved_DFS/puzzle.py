@@ -12,7 +12,7 @@ visited = []
 
 
 def readFile():
-    file = open(r"C:\Users\USER\AI\sample1", "r+")
+    file = open(r"C:\Users\USER\AI\mypuzzle\sample1.txt", "r+")
     initialState = file.readlines()
 
     for line in initialState:
@@ -144,9 +144,9 @@ def DFS():
             stepCounter(i)
             #print("milse "+ str(i))
             return
-        # elif thisState in visited:
-        #     continue
-        
+        if thisState in visited:
+            continue
+
         visited.append(thisState)
         
         successors = getSuccessors(thisState,i)
@@ -157,11 +157,15 @@ def DFS():
             frontier.append(successors[j])
             frontierCopy.append(successors[j])
             size += 1
+            i += 1
 
-        i += 1
+
+
 
 
 def main():
+
+    run  = True
     readFile()
     # BFS();
     DFS()
